@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 export const login = (username, password) => {
     return fetch('/api/users', {
         headers: {

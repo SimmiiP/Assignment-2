@@ -13,7 +13,7 @@ const AuthContextProvider = (props) => {
   const setToken = (data) => {
     localStorage.setItem("token", data);
     setAuthToken(data);
-  }
+  };
 
   const authenticate = async (username, password) => {
     const result = await login(username, password);

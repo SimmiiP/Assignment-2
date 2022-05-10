@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./authContext";
 
-const BaseAuthHeader = (props) => {
+const BaseAuthHeader = props => {
   const context = useContext(AuthContext);
   const navigate = useNavigate();
 

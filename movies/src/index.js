@@ -47,17 +47,19 @@ const App = () => {
       <Route path="/login" element={ <LoginPage /> } />
       <Route path="/signup" element={ <SignUpPage /> } />
       
+      <Route path="/movies/upcoming" element={ <MovieUpcomingPage />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="*" element={ <Navigate to="/" /> } />
+      <Route path="/movies/:id" element={<MoviePage />} />
+      <Route path="/movies/actors" element={<ActorsPage/>}/>
+
       <Route element={<ProtectedRoutes />}>
-        <Route path="/movies/upcoming" element={ <MovieUpcomingPage />} />
-        <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
-        <Route path="credits/:id" element={ <MovieCreditPage /> } />
+       
         <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
-        <Route path="/movies/:id" element={<MoviePage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="*" element={ <Navigate to="/" /> } />
         <Route path="/movies/rated" element={<RatedMoviesPage/>} />
         <Route path="/movies/playlist" element={<PlaylistMoviesPage/>} />
-        <Route path="/movies/actors" element={<ActorsPage/>}/>
+        <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
+      <Route path="credits/:id" element={ <MovieCreditPage /> } />
         </Route>
 
       </Routes>
