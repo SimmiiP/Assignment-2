@@ -3,7 +3,8 @@ import fetch from 'node-fetch';
 export const login = (username, password) => {
     return fetch('/api/users', {
         headers: {
-            'Content-Type': 'application/json'
+
+            "Content-Type": "application/json"
         },
         method: 'post',
         body: JSON.stringify({ username: username, password: password })
