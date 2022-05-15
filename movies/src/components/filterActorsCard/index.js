@@ -40,7 +40,7 @@ const formControl =
     };
   
     const handleTextChange = (e, props) => {
-      handleChange(e, "person", e.target.value);
+      handleChange(e, "name", e.target.value);
     };
   
 
@@ -62,7 +62,7 @@ const formControl =
       label="Search field"
       type="search"
       variant="filled"
-      value={props.personFilter}
+      value={props.peopleFilter}
       onChange={handleTextChange}
     />
         

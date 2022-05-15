@@ -41,7 +41,7 @@ const AuthContextProvider = (props) => {
         authenticate,
         register,
         signout,
-        userName
+        userName,
       }}
     >
       {props.children}

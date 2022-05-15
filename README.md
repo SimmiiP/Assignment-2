@@ -4,8 +4,8 @@ Name: Oluwasimisola Popoola
 
 ## Features. 
 
-+
-+
++ I fixed the path to the actors images so now they show up
++ I fixed the actor filter card so now it filters the actors by name
 +
 +
 +

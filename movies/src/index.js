@@ -14,7 +14,8 @@ import RatedMoviesPage from "./pages/ratedMoviesPage.js";
 import PlaylistMoviesPage from "./pages/moviePlaylistPage";
 import ActorsPage from "./pages/actorsPage";
 import MovieCreditPage from "./pages/movieCreditsPage";
-
+import TrendingMoviePage from "./pages/trendingPage";
+import ActorDetailsPage from "./pages/actorDetailsPage";
 //New
 
 import LoginPage from "./pages/loginPage";
@@ -52,7 +53,8 @@ const App = () => {
       <Route path="*" element={ <Navigate to="/" /> } />
       <Route path="/movies/:id" element={<MoviePage />} />
       <Route path="/movies/actors" element={<ActorsPage/>}/>
-
+      <Route path="/movies/trending" element={<TrendingMoviePage/>}/>
+      <Route path="/movies/actorspage" element={<ActorDetailsPage/>}/>
       <Route element={<ProtectedRoutes />}>
        
         <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />

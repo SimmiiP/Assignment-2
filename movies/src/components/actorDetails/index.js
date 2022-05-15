@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Player } from 'video-react';
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -22,7 +21,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie }) => {  // Don't miss this!
+const ActorDetails = ({ people }) => {  // Don't miss this!
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [drawerOpen2, setDrawerOpen2] = useState(false);
 
@@ -33,7 +32,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
       </Typography>
 
       <Typography variant="h6" component="p">
-        {movie.overview}
+        {people.overview}
       </Typography>
 
       <Paper 
@@ -43,23 +42,23 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         <li>
           <Chip label="Genres" sx={{...chip}} color="primary" />
         </li>
-        {movie.genres.map((g) => (
+        {people.genres.map((g) => (
           <li key={g.name}>
             <Chip label={g.name} sx={{...chip}} />
           </li>
         ))}
       </Paper>
       <Paper component="ul" sx={{...root}}>
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
+        <Chip icon={<AccessTimeIcon />} label={`${people.runtime} min.`} />
         <Chip
           icon={<MonetizationIcon />}
-          label={`${movie.revenue.toLocaleString()}`}
+          label={`${people.revenue.toLocaleString()}`}
         />
         <Chip
           icon={<StarRate />}
-          label={`${movie.vote_average} (${movie.vote_count}`}
+          label={`${people.vote_average} (${people.vote_count}`}
         />
-        <Chip label={`Released: ${movie.release_date}`} />
+        <Chip label={`Released: ${people.release_date}`} />
       </Paper>
       <Paper 
         component="ul" 
@@ -68,53 +67,16 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         <li>
           <Chip label="Production Countries" sx={{...chip}} color="primary" />
         </li>
-        {movie.production_countries.map((c) => (
+        {people.production_countries.map((c) => (
           <li key={c.name}>
             <Chip label={c.name} sx={{...chip}} />
           </li>
         ))}
-
       </Paper>
 
-      <Fab
-        color="secondary"
-        variant="extended"
-        onClick={() =>setDrawerOpen(true)}
-        sx={{
-          position: 'fixed',
-          bottom: '1em',
-          right: '1em'
-        }}
-      >
-        <NavigationIcon />
-        Reviews
       
-      </Fab>
-      
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <MovieReviews movie={movie} />
-      </Drawer>
-  
-      <Fab
-        color="secondary"
-        variant="extended"
-        onClick={() =>setDrawerOpen2(true)}
-        sx={{
-          position: 'fixed',
-          bottom: '1em',
-          right: '10em'
-        }}
-      >
-
-        <NavigationIcon />
-        Credits
-      </Fab>
-
-      <Drawer anchor="top" open={drawerOpen2} onClose={() => setDrawerOpen2(false)}>
-        <MovieCredits movie={movie} />
-      </Drawer>
 
       </>
   );
 };
-export default MovieDetails ;
+export default ActorDetails;

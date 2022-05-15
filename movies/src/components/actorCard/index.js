@@ -6,10 +6,6 @@ import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
-import StarRateIcon from "@mui/icons-material/StarRate";
-import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
@@ -34,8 +30,8 @@ export default function ActorCard({ people, action }) {
       <CardMedia
         sx={{ height: 500 }}
         image={
-         people.people_id
-            ? `https://image.tmdb.org/t/p/w500/${people.people_id}`
+         people.profile_path
+            ? `https://image.tmdb.org/t/p/w500/${people.profile_path}`
             : img
         }
       />
@@ -56,7 +52,7 @@ export default function ActorCard({ people, action }) {
       </CardContent>
       <CardActions disableSpacing>
         {action(people)}
-        <Link to={`/people/${people.id}`}>
+        <Link to={`/people/${people.profile_path}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
