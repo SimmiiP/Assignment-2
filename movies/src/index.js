@@ -23,6 +23,7 @@ import AuthHeader from "./authHeader";
 import ProtectedRoutes from "./protectedRoutes";
 import SignUpPage from "./pages/signUpPage";
 import NowPlayingMoviePage from "./pages/nowPlayingPage";
+import RecommendedMoviePage from "./pages/recommendedMoviesPage";
 //New
 
 const queryClient = new QueryClient({
@@ -52,6 +53,7 @@ const App = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="*" element={ <Navigate to="/" /> } />
       <Route path="/movies/:id" element={<MoviePage />} />
+      <Route path="/movies/recommendations/:id" element={<RecommendedMoviePage/>}/>
       <Route path="/movies/actors" element={<ActorsPage/>}/>
       <Route path="/movies/actorspage" element={<ActorDetailsPage/>}/>
       <Route element={<ProtectedRoutes />}>
