@@ -11,7 +11,7 @@ Name: Oluwasimisola Popoola
 + When you favorite movies they save to your account and so you can log out and log back in and see your favorites.
 + The filter movies card filters through your favorites to your new movies
 + I added a now playing page that shows movies currently in cinemas.
-+ 
++ I added a also watch page which takes you to recommended movies
 
 ## Setup Requirements 
 
