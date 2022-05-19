@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from '../authContext';
 
+
 const SignUpPage = props => {
   const context = useContext(AuthContext)
   const [userName, setUserName] = useState("");
@@ -10,7 +11,7 @@ const SignUpPage = props => {
   const [registered, setRegistered] = useState(false);
 
   const register = () => {
-    let passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$/;
+    let passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[0-9])[A-Za-z\d0-9]{8,}$/;
     const validPassword = passwordRegEx.test(password);
 
     if (validPassword && password === passwordAgain) {
@@ -22,7 +23,7 @@ const SignUpPage = props => {
   if (registered === true) {
     return <Navigate to="/login" />;
   }
-
+  
   return (
     <>
       <h2>SignUp page</h2>

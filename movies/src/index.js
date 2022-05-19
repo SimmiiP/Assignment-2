@@ -14,7 +14,6 @@ import RatedMoviesPage from "./pages/ratedMoviesPage.js";
 import PlaylistMoviesPage from "./pages/moviePlaylistPage";
 import ActorsPage from "./pages/actorsPage";
 import MovieCreditPage from "./pages/movieCreditsPage";
-import TrendingMoviePage from "./pages/trendingPage";
 import ActorDetailsPage from "./pages/actorDetailsPage";
 //New
 
@@ -23,6 +22,7 @@ import AuthProvider from "./authContext";
 import AuthHeader from "./authHeader";
 import ProtectedRoutes from "./protectedRoutes";
 import SignUpPage from "./pages/signUpPage";
+import NowPlayingMoviePage from "./pages/nowPlayingPage";
 //New
 
 const queryClient = new QueryClient({
@@ -47,13 +47,12 @@ const App = () => {
       <Routes>
       <Route path="/login" element={ <LoginPage /> } />
       <Route path="/signup" element={ <SignUpPage /> } />
-      
+      <Route path="/movies/nowplaying" element={<NowPlayingMoviePage/>}/>
       <Route path="/movies/upcoming" element={ <MovieUpcomingPage />} />
       <Route path="/" element={<HomePage />} />
       <Route path="*" element={ <Navigate to="/" /> } />
       <Route path="/movies/:id" element={<MoviePage />} />
       <Route path="/movies/actors" element={<ActorsPage/>}/>
-      <Route path="/movies/trending" element={<TrendingMoviePage/>}/>
       <Route path="/movies/actorspage" element={<ActorDetailsPage/>}/>
       <Route element={<ProtectedRoutes />}>
        

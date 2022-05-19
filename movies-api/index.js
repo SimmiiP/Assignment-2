@@ -34,6 +34,10 @@ app.use('/api/genres', genresRouter);
 
 app.use('/api/users', usersRouter);
 
+app.use('/api/users/favourites', usersRouter);
+
+app.use('/api/users/rated', usersRouter);
+
 app.use(errHandler);
 
 app.listen(port, () => {

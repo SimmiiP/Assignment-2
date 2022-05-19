@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import { login, signup } from "./api/movies-api";
+import { login, signup, favourites, rated } from "./api/movies-api";
 
 export const AuthContext = createContext(null);
 
@@ -8,6 +8,8 @@ const AuthContextProvider = (props) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authToken, setAuthToken] = useState(existingToken);
   const [userName, setUserName] = useState("");
+  const [addfavourites, setFavourites] = useState("");
+  const [addrated, setRated] = useState("");
 
   //Function to put JWT token in local storage.
   const setToken = (data) => {
@@ -30,9 +32,28 @@ const AuthContextProvider = (props) => {
     return (result.code == 201) ? true : false;
   };
 
+
+  const addFavourite = async (addfavourites) => {
+    const result = await favourites(addfavourites);
+    if (result.token) {
+      setToken(result.token)
+      setFavourites(true);
+    }
+  };
+
+  const addRated = async (addrated) => {
+    const result = await rated(addrated);
+    if (result.token) {
+      setToken(result.token)
+      setRated(true);
+    }
+  };
+
   const signout = () => {
     setTimeout(() => setIsAuthenticated(false), 100);
-  }
+  };
+
+
 
   return (
     <AuthContext.Provider
@@ -42,6 +63,8 @@ const AuthContextProvider = (props) => {
         register,
         signout,
         userName,
+        addFavourite,
+        addRated,
       }}
     >
       {props.children}

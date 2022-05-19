@@ -18,6 +18,12 @@ router.get('/:userName/favourites', asyncHandler( async (req, res) => {
     res.status(200).json(user.favourites);
   }));
 
+  router.get('/:userName/rated', asyncHandler( async (req, res) => {
+    const userName = req.params.userName;
+    const user = await User.findByUserName(userName).populate('rated');
+    res.status(200).json(user.rated);
+  }));
+
 // register(Create)/Authenticate User
 router.post('/',asyncHandler( async (req, res, next) => {
     if (!req.body.username || !req.body.password) {
@@ -49,6 +55,16 @@ router.post('/',asyncHandler( async (req, res, next) => {
     const movie = await movieModel.findByMovieDBId(newFavourite);
     const user = await User.findByUserName(userName);
     await user.favourites.push(movie._id);
+    await user.save(); 
+    res.status(201).json(user); 
+  }));
+
+  router.post('/:userName/rated', asyncHandler(async (req, res) => {
+    const newRated = req.body.id;
+    const userName = req.params.userName;
+    const movie = await movieModel.findByMovieDBId(newRated);
+    const user = await User.findByUserName(userName);
+    await user.rated.push(movie._id);
     await user.save(); 
     res.status(201).json(user); 
   }));

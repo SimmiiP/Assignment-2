@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import PageTemplate from '../components/templateMovieListPage'
-import { getTrendingMovies } from "../api/tmdb-api";
+import { getNowPlayingMovies } from "../api/tmdb-api";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToPlaylistIcon from '../components/cardIcons/addToPlaylist';
 import AddToRatedIcon from "../components/cardIcons/addToRated";
 
-const TrendingMoviePage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('trending', getTrendingMovies)
+const NowPlayingMoviePage = (props) => {
+  const {  data, error, isLoading, isError }  = useQuery('nowplaying', getNowPlayingMovies)
 
   if (isLoading) {
     return <Spinner />
@@ -16,9 +16,9 @@ const TrendingMoviePage = (props) => {
   if (isError) {
     return <h1>{error.message}</h1>
   } 
- const trending = data.results
+ const movies = data.results
   
- const mustWatch = trending.filter(m => m.mustWatch)
+ const mustWatch = movies.filter(m => m.mustWatch)
  localStorage.setItem('mustWatch', JSON.stringify(mustWatch))
  const addToWatchList = (movieId) => true; 
 
@@ -26,12 +26,12 @@ const TrendingMoviePage = (props) => {
 
   return (
     <PageTemplate
-      title='Upcoming Movies'
-      trending={trending}
-      action={(trending) => {
+      title='In Cinemas Now'
+      movies={movies}
+      action={(movie) => {
         return (
           <>
-            < AddToPlaylistIcon trending={trending} />
+            < AddToPlaylistIcon movie={movie} />
             
           </>
         );
@@ -39,4 +39,4 @@ const TrendingMoviePage = (props) => {
     />
   );
 };
-export default TrendingMoviePage;
+export default NowPlayingMoviePage;

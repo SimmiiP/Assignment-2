@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import PageTemplate from "../components/templateMovieListPage";
 import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
@@ -6,9 +6,12 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner'
 import RemoveFromRatedIcon from "../components/cardIcons/removeFromRated";
 import WriteReview from "../components/cardIcons/writeReview";
+import { AuthContext } from '../authContext';
 
 const RatedMoviesPage = () => {
   const {rated: movieIds } = useContext(MoviesContext);
+  const context = useContext(AuthContext);
+  const [addrated, setRated] = useState("");
 
   // Create an array of queries and run in parallel.
   const ratedMovieQueries = useQueries(
@@ -32,6 +35,14 @@ const RatedMoviesPage = () => {
   });
 
   const toDo = () => true;
+
+  const rated = () => {
+    context.addRated(addrated);
+  };
+
+  if (context.login === true) {
+    return {rated};
+  }
 
   return (
     <PageTemplate

@@ -7,13 +7,19 @@ import { getMovieImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 import MovieFooter from "../footerMovie";
+import { getSimilarMovies } from "../../api/tmdb-api";
+import Paper from "@mui/material/Paper";
 
 const TemplateMoviePage = ({ movie, children }) => {
 
   const { data , error, isLoading, isError } = useQuery(
     ["images", { id: movie.id }],
-    getMovieImages
+    getMovieImages,
+
+    ["similar", {id: movie.id }],
+    getSimilarMovies,
   );
+  
 
   if (isLoading) {
     return <Spinner />;
@@ -22,7 +28,8 @@ const TemplateMoviePage = ({ movie, children }) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  const images = data.posters
+  const images = data.posters;
+  const similarMovies = movie.similar
 
   return (
     <>

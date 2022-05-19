@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Player } from 'video-react';
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
