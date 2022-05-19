@@ -1,6 +1,6 @@
 # Assignment 2 - Web API
 
-Name: Oluwasimisola Popoola
++ Name: Oluwasimisola Popoola
 
 ## Features. 
 
@@ -53,6 +53,6 @@ FAST_REFRESH=false
 + users request a JWT Token which they sends with all requests to verify their identity
 
 ## INTERGRATING WITH REACT APP
-
++ I intergrated th app and api through the proxy in the package.json folder. The sign up page and log in page both use the api rather than the tmdb api.
 ## INDEPENDANT LEARNING
 + I tried adding a popup for when a password is incorrect but i couldnt get it working and i didn't leave the code in as it caused errors with signup 
